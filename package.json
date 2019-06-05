@@ -74,5 +74,10 @@
     "rules": {
       "flowtype-errors/show-errors": "off"
     }
+  },
+  "renovate": {
+    "extends": [
+      "bliss"
+    ]
   }
 }
