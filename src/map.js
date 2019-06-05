@@ -1,5 +1,5 @@
 import React from 'react';
-import {Entity} from 'aframe-react'
+import { Entity } from 'aframe-react';
 // This wall-generator was inspiried by Shane Hudon's post
 // https://24ways.org/2016/first-steps-in-vr/
 
@@ -48,13 +48,13 @@ const map = {
 export default function renderStart() {
   const WALL_SIZE = 3;
   const WALL_HEIGHT = 12;
-  let el = [];
+  const el = [];
   let playerPos;
 
   for (let x = 0; x < map.height; x += 1) {
     for (let y = 0; y < map.width; y += 1) {
       const i = y * map.width + x;
-      const position = `${(x - map.width / 2) * WALL_SIZE} 1.5 ${(y -
+      const position = `${(x - map.width / 2) * WALL_SIZE} 1.6 ${(y -
         map.height / 2) *
         WALL_SIZE}`;
 
@@ -66,21 +66,21 @@ export default function renderStart() {
         map.data[i] === 4
       ) {
         const wallProps = {};
-        wallProps['width'] = WALL_SIZE;
-        wallProps['height'] = WALL_HEIGHT;
-        wallProps['depth'] = WALL_SIZE;
-        wallProps['position'] = position;
+        wallProps.width = WALL_SIZE;
+        wallProps.height = WALL_HEIGHT;
+        wallProps.depth = WALL_SIZE;
+        wallProps.position = position;
 
         // black wall
         if (map.data[i] === 2) {
-          wallProps['color'] = '#000';
+          wallProps.color = '#000';
           wallProps['static-body'] = '';
         }
 
         // secretwall
         else if (map.data[i] === 3) {
-          wallProps['color'] = '#fff';
-          wallProps['material'] = {
+          wallProps.color = '#fff';
+          wallProps.material = {
             src: '#wall-secret',
             repeat: '4 4'
           };
@@ -88,8 +88,8 @@ export default function renderStart() {
 
         // brick wall
         else if (map.data[i] === 4) {
-          wallProps['color'] = '#fff';
-          wallProps['material'] = {
+          wallProps.color = '#fff';
+          wallProps.material = {
             src: '#wall-brick',
             repeat: '2 2'
           };
@@ -98,16 +98,16 @@ export default function renderStart() {
 
         // normal walls
         else {
-          wallProps['color'] = '#fff';
-          wallProps['material'] = {
-              src: '#wall',
-              repeat: '20 20',
-              roughness: 1
+          wallProps.color = '#fff';
+          wallProps.material = {
+            src: '#wall',
+            repeat: '20 20',
+            roughness: 1
           };
           wallProps['static-body'] = '';
         }
 
-        el.push(<Entity primitive="a-box" {...wallProps} />);
+        el.push(<Entity static-body={true} primitive="a-box" {...wallProps} />);
       }
       // set player position if the number is a 2
       if (map.data[i] === 8) {
@@ -120,5 +120,5 @@ export default function renderStart() {
     }
   }
 
-  return {playerPos, el}
+  return { playerPos, el };
 }
