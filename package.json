@@ -1,5 +1,5 @@
 {
-  "name": "aframe-react-boilerplate",
+  "name": "webvr-museum",
   "version": "3.0.1",
   "description": "Boilerplate for building virtual reality experiences with A-Frame and React.",
   "dependencies": {
@@ -9,7 +9,9 @@
     "aframe-particle-system-component": "^1.0.8",
     "aframe-physics-system": "^3.3.0",
     "aframe-react": "^4.0.x",
+    "aframe-room-component": "^0.3.0",
     "babel-polyfill": "^6.26.0",
+    "metmuseum": "^0.0.1-0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1"
@@ -24,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ngokevin/aframe-react-boilerplate.git"
+    "url": "git+https://github.com/amilajack/webvr-museum.git"
   },
   "keywords": [
     "aframe",
@@ -40,9 +42,9 @@
   "author": "Kevin Ngo <kngo@mozilla.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ngokevin/aframe-react-boilerplate/issues"
+    "url": "https://github.com/amilajack/webvr-museum/issues"
   },
-  "homepage": "https://github.com/ngokevin/aframe-react-boilerplate#readme",
+  "homepage": "https://github.com/amilajack/webvr-museum#readme",
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-bliss": "^3.4.0",
@@ -62,7 +64,10 @@
     ]
   },
   "eslintConfig": {
-    "extends": ["plugin:react/recommended", "bliss"],
+    "extends": [
+      "plugin:react/recommended",
+      "bliss"
+    ],
     "env": {
       "browser": true
     },
