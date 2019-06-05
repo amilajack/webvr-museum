@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/amilajack/webvr-museum/static/js/main.68a17a18.chunk.js",
+    "main.js.map": "/amilajack/webvr-museum/static/js/main.68a17a18.chunk.js.map",
+    "runtime~main.js": "/amilajack/webvr-museum/static/js/runtime~main.ab0dcc7f.js",
+    "runtime~main.js.map": "/amilajack/webvr-museum/static/js/runtime~main.ab0dcc7f.js.map",
+    "static/js/2.b7aa9a1c.chunk.js": "/amilajack/webvr-museum/static/js/2.b7aa9a1c.chunk.js",
+    "static/js/2.b7aa9a1c.chunk.js.map": "/amilajack/webvr-museum/static/js/2.b7aa9a1c.chunk.js.map",
+    "index.html": "/amilajack/webvr-museum/index.html",
+    "precache-manifest.a640d629e048ccc55bc2dd882605f57a.js": "/amilajack/webvr-museum/precache-manifest.a640d629e048ccc55bc2dd882605f57a.js",
+    "service-worker.js": "/amilajack/webvr-museum/service-worker.js"
+  }
+}
