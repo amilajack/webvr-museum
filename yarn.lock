@@ -1590,6 +1590,11 @@ aframe-room-component@^0.3.0:
   resolved "https://registry.yarnpkg.com/aframe-room-component/-/aframe-room-component-0.3.0.tgz#5cdf8e9e2982f06ea6452ef60eb272a80a439680"
   integrity sha1-XN+OnimC8G6mRS72DrJyqApDloA=
 
+aframe-teleport-controls@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/aframe-teleport-controls/-/aframe-teleport-controls-0.3.1.tgz#7d7ef206f483ea92425a6333b0f8fb26c9596d1c"
+  integrity sha1-fX7yBvSD6pJCWmMzsPj7JslZbRw=
+
 aframe@0.8.2:
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/aframe/-/aframe-0.8.2.tgz#435dd7c7d2f059316af87f4a9783427b0617e11f"

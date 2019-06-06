@@ -4,6 +4,7 @@ import 'aframe-extras';
 import 'aframe-physics-system';
 import 'aframe-particle-system-component';
 import 'aframe-room-component';
+import 'aframe-teleport-controls';
 import { Scene } from 'aframe-react';
 import ReactDOM from 'react-dom';
 import metmuseum from 'metmuseum';
