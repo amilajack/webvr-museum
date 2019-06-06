@@ -44,7 +44,7 @@
   "bugs": {
     "url": "https://github.com/amilajack/webvr-museum/issues"
   },
-  "homepage": "https://github.com/amilajack/webvr-museum#readme",
+  "homepage": "https://amilajack.github.io/webvr-museum",
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-bliss": "^3.4.0",

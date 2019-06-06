@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Hello, WebVR! - A-Frame</title>
+      <meta name="description" content="Hello, WebVR! - A-Frame">
+      <!--  note we are using 0.9.1 as most recent -->
+      <script src="https://aframe.io/releases/0.9.1/aframe.min.js"></script>s
+
+      <!-- a nice script for setting up an environment for better spatial awareness : https://github.com/supermedium/aframe-environment-component -->
+      <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    </head>
+    <body>
+      <!-- A-Frame scene - al A-Frame entities must go in the scene -->
+      <a-scene>
+        <!-- A-Frame uses an asset system to load and cache content:  -->
+        <a-assets>
+          <!-- all Earth textures from https://www.solarsystemscope.com/textures/ . slightly modified -->
+          <!-- NEW: loading in additional textures -->
+          <img id="earth_map"        src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2F2k_earth_daymap.jpg?1556125968798" crossorigin="anonymous">
+          <img id="earth_normal"     src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2F2k_earth_normal_map.tif?1556125969088" crossorigin="anonymous">
+          <img id="earth_roughness"  src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2F2k_earth_roughness_map.jpg?1556128168667" crossorigin="anonymous">
+          <img id="earth_metalness"  src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2F2k_earth_metalness_map.jpg?1556128608140" crossorigin="anonymous">
+          <img id="earth_clouds"     src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2F2k_earth_clouds.png?1556126355573" crossorigin="anonymous">
+
+          <!-- NEW: milky way texture from HDRlabs.com: http://www.hdrlabs.com/sibl/archive.html -->
+          <!-- using this for Erath's reflections -->
+          <img id="milky_way"      src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2FMilkyway_BG.jpg?1556127014713" crossorigin="anonymous">
+
+          <!-- NEW: ambient "space' music from https://soundcloud.com/royaltyfreebackgroundmusic/creative-commons-music-3946 -->
+          <audio id="space_music" src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2FAMBIENT_FUTURISTIC_SPACE_EXPLORATION_TECHNOLOGY_ATMOSPHERE.mp3?1556155674987" preload="auto" crossorigin="anonymous"></audio>
+
+          <!-- 3D models from Sketchfab.com, and converted from .gltf to .glb using https://glb-packer.glitch.me -->
+          <!-- mars: https://sketchfab.com/3d-models/mars-2b46962637ee4311af8f0d1d0709fbb2 -->
+          <!-- methane molecule: https://sketchfab.com/3d-models/tetrahedral-structure-of-methane-6e09c1451691443cb520e8ff18bfe5c1#download -->
+          <!-- asteroid: https://sketchfab.com/3d-models/asteroid-01-df95d3da67aa4c769ec81394e0b0ffef -->
+          <a-asset-item id="mars_model"     response-type="arraybuffer" src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2Fmars.glb?1556133807353"></a-asset-item>
+          <a-asset-item id="methane_model"  response-type="arraybuffer" src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2Fmethane.glb?1556134081699"></a-asset-item>
+          <a-asset-item id="asteroid_model" response-type="arraybuffer" src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2Fasteroid.glb?1556134088081"></a-asset-item>
+
+          <!-- following images from NASA.gov -->
+          <img id="mars_img"     src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2FMarsSurface.jpg?1556142234939" crossorigin="anonymous">
+          <img id="methane_img"  src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2FMarsMethane.jpg?1556142233530" crossorigin="anonymous">
+          <img id="earth_img"    src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2FEarth.jpg?1556142233633" crossorigin="anonymous">
+          <img id="asteroid_img" src="https://cdn.glitch.com/4d85200f-900f-4f4a-b950-82c4af80c1fb%2FPanspermia.jpg?1556142233666" crossorigin="anonymous">
+        </a-assets>
+
+        <a-entity sound="src:#space_music; autoplay:true;"></a-entity>
+
+        <!-- NEW: if we want to change the default camera parameters we must explicitly define a camera object -->
+        <a-entity camera wasd-controls look-controls position="0 1.6 0"></a-entity>
+
+        <!-- NEW: adding another light to make text more legible with dark starry background. By defining our own light we also override the default lighting, though in this case the a-envrironment component has also added lighting -->
+        <a-entity light="type:point; intensity:1.4;" position="0 1.5 0"></a-entity>
+
+        <!-- "models" as a textured sphere and glbs from Sketchfab -->
+        <!-- NEW: added cloud layer, additional textures, and animation to earth -->
+        <!-- NEW: adding rotation animations to objects -->
+        <a-entity id="earth" position="0 3.5 6">
+          <a-entity  geometry="primitive:sphere; radius:2.0" 
+                     material="src:#earth_map; normal:#earth_normal; roughnessMap:#earth_roughness; metalnessMap:#earth_metalness; sphericalEnvMap:#milky_way"
+                     animation="property:rotation; to:0 360 0; loop:true; dur:70000"></a-entity>
+
+          <a-entity  geometry="primitive:sphere; radius:2.01" 
+                     material="src:#earth_clouds; transparent:true;"
+                     animation="property:rotation; to:0 360 0; loop:true; dur:120000" ></a-entity>
+        </a-entity>
+
+        <a-entity id="mars" position="6 3.5 0" rotation="0 -90 0" scale="1 1 1"
+                gltf-model="#mars_model"
+                animation="property:rotation; to:0 360 0; loop:true; dur:50000"></a-entity>
+
+        <a-entity id="methane" position="0 3.5 -6" rotation="0 0 0" scale="1 1 1"
+                gltf-model="#methane_model"
+                animation="property:rotation; to:0 360 0; loop:true; dur:40000"></a-entity>
+
+        <a-entity id="asteroid" position="-6 3.5 0" rotation="0 90 0" scale="0.01 0.01 0.01"
+                gltf-model="#asteroid_model"
+                animation="property:rotation; to:0 360 0; loop:true; dur:60000"></a-entity>
+
+        <!-- information planes -->
+        <a-entity id="earth_plane" position="0 0.6 4" rotation="-30 180 0" scale="1 1 1">
+          <a-entity geometry="primitive:plane; width:1.5; height:1.0;"
+                    material="src:#earth_img" position="0.65 0 0.01" ></a-entity>
+          <a-entity geometry="primitive:plane; width:3.0; height:1.2;" material="color:white; shader:flat;" position="0 0 0" ></a-entity>
+          <a-entity text="value:Earth; 
+                          color:black; font:exo2bold; width:1.3; anchor:left; baseline:top; wrapCount:12;" position="-1.4 0.5 0.01" ></a-entity>
+          <a-entity text="value:The third planet from the Sun and the only astronomical object known to harbor life. The Earth is over 4.5 billion years old.; 
+                          color:black; font:roboto; width:1.25; anchor:left; baseline:top; wrapCount:18;" position="-1.4 0.25 0.01" ></a-entity>
+        </a-entity>
+
+        <a-entity id="mars_plane" position="4 0.5 0" rotation="-30 -90 0" scale="1 1 1">
+          <a-entity geometry="primitive:plane; width:1.5; height:1.0;"
+                    material="src:#mars_img" position="0.65 0 0.01" ></a-entity>
+          <a-entity geometry="primitive:plane; width:3.0; height:1.2;" material="color:white; shader:flat;" position="0 0 0" ></a-entity>
+          <a-entity text="value:Mars; 
+                          color:black; font:exo2bold; width:1.3; anchor:left; baseline:top; wrapCount:12;" position="-1.4 0.5 0.01" ></a-entity>
+          <a-entity text="value:The fourth planet from the Sun. On its surface is the largest planetary mountain - Olympus Mons.; 
+                          color:black; font:roboto; width:1.25; anchor:left; baseline:top; wrapCount:18;" position="-1.4 0.25 0.01" ></a-entity>
+        </a-entity>
+
+        <a-entity id="methane_plane" position="0 0.5 -4" rotation="-30 0 0" scale="1 1 1">
+          <a-entity geometry="primitive:plane; width:1.5; height:1.0;"
+                    material="src:#methane_img" position="0.65 0 0.01" ></a-entity>
+          <a-entity geometry="primitive:plane; width:3.0; height:1.2;" material="color:white; shader:flat;" position="0 0 0" ></a-entity>
+          <a-entity text="value:Methane; 
+                          color:black; font:exo2bold; width:1.3; anchor:left; baseline:top; wrapCount:12;" position="-1.4 0.5 0.01" ></a-entity>
+          <a-entity text="value:There is seasonal methane being emitted from Mars' surface suggesting possible life underground.; 
+                          color:black; font:roboto; width:1.25; anchor:left; baseline:top; wrapCount:18;" position="-1.4 0.25 0.01" ></a-entity>
+        </a-entity>
+
+        <a-entity id="asteroid_plane" position="-4 0.5 0" rotation="-30 90 0" scale="1 1 1">
+          <a-entity geometry="primitive:plane; width:1.5; height:1.0;"
+                    material="src:#asteroid_img" position="0.65 0 0.01" ></a-entity>
+          <a-entity geometry="primitive:plane; width:3.0; height:1.2;" material="color:white; shader:flat;" position="0 0 0" ></a-entity>
+          <a-entity text="value:Asteroid; 
+                          color:black; font:exo2bold; width:1.3; anchor:left; baseline:top; wrapCount:12;" position="-1.4 0.5 0.01" ></a-entity>
+          <a-entity text="value:The panspermia hypothesis suggests that life may be carried from one planet to another via objects such as asteroids.; 
+                          color:black; font:roboto; width:1.25; anchor:left; baseline:top; wrapCount:18;" position="-1.4 0.25 0.01" ></a-entity>
+        </a-entity>
+
+        <!-- NEW: changed to starry environment = more relevant -->
+        <a-entity environment="preset:starry"></a-entity>
+      </a-scene>
+    </body>
+</html>

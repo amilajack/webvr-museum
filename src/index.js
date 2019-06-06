@@ -27,7 +27,6 @@ export default class VRScene extends React.Component {
       metmuseum.getItem(200),
       metmuseum.getItem(300)
     ]);
-    console.log(art);
     this.setState({ art });
   }
 
@@ -126,7 +125,7 @@ export default class VRScene extends React.Component {
           <a-asset-item id="fox-obj" src="img/secret/fox/model.obj" />
           <a-asset-item id="fox-mtl" src="img/secret/fox/materials.mtl" />
 
-          <a-mixin id="floorMat" material="color:#wall" />
+          <a-mixin id="floorMat" material="src:#floor" />
 
           <img
             id="groundTexture"
@@ -138,17 +137,24 @@ export default class VRScene extends React.Component {
           />
         </a-assets>
 
-        <a-light type="directional" intensity="0.9" position="-1 -2  2" />
-        <a-light type="directional" intensity="1.0" position=" 2  1 -1" />
-
         <a-sound src="#foo" autoplay="true" loop={true} position="1 1 0" />
         <a-sound src="#bar" autoplay="true" loop={true} position="1 1 0" />
 
-        <rw-room position="-2.5 0 -2.5" width="5" length="5" height="3">
+        <rw-room position="-2.5 0 -2.5" width="10" length="10" height="10">
           <rw-wall static-body material="color:#F88">
             <rw-doorhole id="holeA" />
           </rw-wall>
-          <rw-wall static-body material="color:#F88" />
+          <rw-wall static-body material="color:white">
+            <a-box
+              crossorigin="anonymous"
+              src="foo.jpg"
+              position="5 5 0"
+              scale="0.5 0.5 0.2"
+              width="8"
+              length="2"
+              height="8"
+            />
+          </rw-wall>
           <rw-wall static-body material="color:#F88">
             <rw-doorhole id="frontInner" />
           </rw-wall>
@@ -158,7 +164,7 @@ export default class VRScene extends React.Component {
           <rw-ceiling material="color:#AAA" />
         </rw-room>
 
-        <rw-doorlink from="#holeA" to="#holeB" width="2" position="0.5 0 0">
+        <rw-doorlink from="#holeA" to="#holeB" width="5" position="0.5 0 0">
           <rw-floor mixin="floorMat" />
           <rw-ceiling material="color:#BB6" />
           <rw-sides material="color:#BB6" />
@@ -180,7 +186,7 @@ export default class VRScene extends React.Component {
           <rw-wall static-body position="-2 0 -5" material="color:#F0F">
             {this.state.art
               ? this.state.art.map((e, i) => (
-                  <a-image
+                  <a-box
                     crossorigin="anonymous"
                     src="foo.jpg"
                     position={this.state.artPositions[i]}
@@ -207,10 +213,10 @@ export default class VRScene extends React.Component {
         </rw-room>
 
         <rw-room position="0 0 0" outside="true" material="color:#877">
-          <rw-wall static-body position="-3 0 -8" height="3" />
-          <rw-wall static-body position=" 4 0 -8" height="3" />
-          <rw-wall static-body position=" 4 0  3" height="3" />
-          <rw-wall static-body position="-3 0  3" height="3">
+          <rw-wall static-body position="103 0 -810" height="10" />
+          <rw-wall static-body position="10 4 0 -810" height="10" />
+          <rw-wall static-body position="10 4 0  310" height="10" />
+          <rw-wall static-body position="103 0  310" height="10">
             <rw-doorhole id="frontOuter" />
             <rw-doorlink
               from="#frontInner"
