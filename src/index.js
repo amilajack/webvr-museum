@@ -4,6 +4,7 @@ import 'aframe-extras';
 import 'aframe-physics-system';
 import 'aframe-particle-system-component';
 import 'aframe-room-component';
+import 'aframe-ctm-model';
 import 'aframe-teleport-controls';
 import { Scene } from 'aframe-react';
 import ReactDOM from 'react-dom';
@@ -126,6 +127,10 @@ export default class VRScene extends React.Component {
           <a-asset-item id="fox-obj" src="img/secret/fox/model.obj" />
           <a-asset-item id="fox-mtl" src="img/secret/fox/materials.mtl" />
 
+          {/* lamps */}
+          <a-asset-item id="lamps-obj" src="models/lamps.obj" />
+          <img id="lamps-texture" src="textures/lamps.jpg" />
+
           <a-mixin id="floorMat" material="src:#floor" />
 
           <img
@@ -213,7 +218,13 @@ export default class VRScene extends React.Component {
           <rw-ceiling material="color:#99A" />
         </rw-room>
 
-        <rw-room position="0 0 0" outside="true" material="color:#877">
+        <rw-room position="0 0 0" material="color:#877">
+          {/* Column */}
+          <a-entity static-body position=".5 .5 .5" rotation="0 90 0">
+            <a-box src="foo.jpg" position="0 1.65 0" scale="0.5 0.5 0.5" />
+            <a-box scale="0.5 2.75 0.5" color="#345" />
+          </a-entity>
+
           <rw-wall static-body position="103 0 -810" height="10" />
           <rw-wall static-body position="10 4 0 -810" height="10" />
           <rw-wall static-body position="10 4 0  310" height="10" />
