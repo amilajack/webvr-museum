@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.js": "/webvr-museum/static/js/main.68a17a18.chunk.js",
-    "main.js.map": "/webvr-museum/static/js/main.68a17a18.chunk.js.map",
+    "main.js": "/webvr-museum/static/js/main.99ae8c01.chunk.js",
+    "main.js.map": "/webvr-museum/static/js/main.99ae8c01.chunk.js.map",
     "runtime~main.js": "/webvr-museum/static/js/runtime~main.1d89e08e.js",
     "runtime~main.js.map": "/webvr-museum/static/js/runtime~main.1d89e08e.js.map",
-    "static/js/2.b7aa9a1c.chunk.js": "/webvr-museum/static/js/2.b7aa9a1c.chunk.js",
-    "static/js/2.b7aa9a1c.chunk.js.map": "/webvr-museum/static/js/2.b7aa9a1c.chunk.js.map",
+    "static/js/2.c6f36d0c.chunk.js": "/webvr-museum/static/js/2.c6f36d0c.chunk.js",
+    "static/js/2.c6f36d0c.chunk.js.map": "/webvr-museum/static/js/2.c6f36d0c.chunk.js.map",
     "index.html": "/webvr-museum/index.html",
-    "precache-manifest.5df5f0aff75ca41e996aa67aa7b82731.js": "/webvr-museum/precache-manifest.5df5f0aff75ca41e996aa67aa7b82731.js",
+    "precache-manifest.dba8c3d62ff28359e2f8d6e743f7f902.js": "/webvr-museum/precache-manifest.dba8c3d62ff28359e2f8d6e743f7f902.js",
     "service-worker.js": "/webvr-museum/service-worker.js"
   }
 }
