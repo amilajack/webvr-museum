@@ -48,7 +48,7 @@
   },
   "homepage": "https://amilajack.github.io/webvr-museum",
   "devDependencies": {
-    "eslint": "^5.16.0",
+    "eslint": "^6.8.0",
     "eslint-config-bliss": "^3.4.0",
     "eslint-plugin-react": "^7.13.0",
     "gh-pages": "^2.0.1"
