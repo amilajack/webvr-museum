@@ -50,7 +50,7 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "eslint-config-bliss": "^3.4.0",
-    "eslint-plugin-react": "^7.13.0",
+    "eslint-plugin-react": "^7.29.4",
     "gh-pages": "^2.0.1"
   },
   "browserslist": {
